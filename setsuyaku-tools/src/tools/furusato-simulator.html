@@ -1,0 +1,209 @@
+<!--HEAD-->
+<title>ふるさと納税 上限額シミュレーター【2026年寄付分・最新税制対応】</title>
+<meta name="description" content="年収と家族構成を入れるだけで、2026年のふるさと納税で自己負担2,000円に収まる寄付上限額の目安がわかります。令和8年度税制改正（基礎控除104万円）に対応。">
+<!-- 公開後に自分のURLへ書き換え -->
+<link rel="canonical" href="https://example.com/tools/furusato-simulator/">
+<meta property="og:title" content="ふるさと納税 上限額シミュレーター【2026年寄付分】">
+<meta property="og:description" content="年収と家族構成を入れるだけ。最新の税制改正に対応した上限額の目安がすぐわかります。">
+<meta property="og:type" content="website">
+<!-- Google AdSense：審査通過後、発行されたコードをここに貼る -->
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org","@type":"FAQPage",
+ "mainEntity":[
+  {"@type":"Question","name":"2026年のふるさと納税の上限額は去年と変わりますか？","acceptedAnswer":{"@type":"Answer","text":"所得税の基礎控除が大きく引き上げられたため、年収によっては所得税率が下がり、上限額が昨年と少し変わることがあります。"}},
+  {"@type":"Question","name":"上限額を超えて寄付するとどうなりますか？","acceptedAnswer":{"@type":"Answer","text":"超えた分は控除されず、自己負担が2,000円より増えます。寄付は目安より少し控えめにするのが安全です。"}},
+  {"@type":"Question","name":"193万円の上限はいつから適用されますか？","acceptedAnswer":{"@type":"Answer","text":"2027年1月以降の寄付から適用予定です。2026年の寄付には関係ありません。"}}
+ ]}
+</script>
+<style>
+/* このページ固有の追加スタイルがあればここに書く */
+</style>
+<!--BODY-->
+<header>
+ <h1>ふるさと納税 上限額シミュレーター<small>2026年（令和8年）の寄付に対応</small></h1>
+ <p class="lede">年収と家族構成を入れると、自己負担2,000円で寄付できる金額の目安がわかります。2026年の税制改正で所得税の基礎控除が最大104万円になった点も反映しています。</p>
+</header>
+
+<form id="f" novalidate>
+ <div class="row">
+  <label for="income">あなたの年収（額面の給与収入）</label>
+  <div class="unit"><input id="income" type="number" inputmode="numeric" min="100" max="10000" value="500"><span>万円</span></div>
+  <p class="hint">源泉徴収票の「支払金額」です。2026年の見込み額を入れてください。</p>
+ </div>
+ <div class="row">
+  <label for="shaho">社会保険料（年額）</label>
+  <div class="unit"><input id="shaho" type="number" inputmode="numeric" min="0" value="75"><span>万円</span></div>
+  <label class="check"><input id="auto" type="checkbox" checked> 年収の15%で自動計算する</label>
+ </div>
+ <div class="row">
+  <label for="spouse">配偶者</label>
+  <select id="spouse">
+   <option value="none">いない・共働き（配偶者の年収が高い）</option>
+   <option value="yes">扶養している（配偶者控除あり）</option>
+  </select>
+ </div>
+ <div class="row two">
+  <div>
+   <label for="kids1">16〜18歳・23歳以上の扶養家族</label>
+   <div class="unit"><input id="kids1" type="number" inputmode="numeric" min="0" max="10" value="0"><span>人</span></div>
+  </div>
+  <div>
+   <label for="kids2">19〜22歳の扶養家族</label>
+   <div class="unit"><input id="kids2" type="number" inputmode="numeric" min="0" max="10" value="0"><span>人</span></div>
+  </div>
+ </div>
+ <p class="hint" style="margin-top:-8px;margin-bottom:18px">15歳以下の子どもは扶養控除の対象外なので、人数に入れなくて大丈夫です。</p>
+ <div class="row">
+  <label for="ideco">iDeCoの掛金（年額）</label>
+  <div class="unit"><input id="ideco" type="number" inputmode="numeric" min="0" value="0"><span>万円</span></div>
+ </div>
+ <button type="submit">上限額を計算する</button>
+</form>
+
+<section class="result" id="result" aria-live="polite">
+ <p class="res-lbl">2026年に寄付できる上限額の目安</p>
+ <div class="res-main">
+  <div class="amount" id="amount">0<span>円</span></div>
+  <div class="hanko" aria-hidden="true">目安</div>
+ </div>
+ <p class="safe" id="safe"></p>
+ <details>
+  <summary>計算の内訳を見る</summary>
+  <div class="tbl"><table id="breakdown"></table></div>
+ </details>
+</section>
+
+<!-- 広告枠①：AdSense通過後に広告コードを入れる -->
+<div class="ad"></div>
+
+<section>
+ <h2>寄付先を探す<span class="pr">PR</span></h2>
+ <p>上限額がわかったら、返礼品を比べて寄付先を選びましょう。</p>
+ <!-- 各URLを、ASP（A8.net・もしもアフィリエイト・楽天アフィリエイト等）で取得した自分のリンクに差し替える -->
+ <div class="portals">
+  <a href="#" rel="sponsored noopener" target="_blank">楽天ふるさと納税<small>楽天会員ならそのまま申し込める</small></a>
+  <a href="#" rel="sponsored noopener" target="_blank">さとふる<small>定番の返礼品が探しやすい</small></a>
+  <a href="#" rel="sponsored noopener" target="_blank">ふるさとチョイス<small>掲載自治体数が多い</small></a>
+ </div>
+</section>
+
+<section>
+ <h2>2026年のふるさと納税で変わったこと</h2>
+ <p>2026年分から所得税の基礎控除が引き上げられ、合計所得489万円以下の人は104万円になりました。一方、ふるさと納税の上限を大きく左右する住民税の基礎控除は43万円のままです。そのため、年収によっては所得税率が下がり、昨年と上限額が少し変わる場合があります。</p>
+ <p>また、高所得者向けに住民税の特例控除へ193万円の上限が設けられましたが、これは2027年の寄付分からです。2026年の寄付には影響しません。</p>
+</section>
+
+<section>
+ <h2>よくある質問</h2>
+ <dl class="faq">
+  <dt>上限額を超えて寄付するとどうなりますか？</dt>
+  <dd>超えた分は控除されず、自己負担が2,000円より増えます。目安より1〜2割控えめに寄付するのが安全です。</dd>
+  <dt>住宅ローン控除や医療費控除があると変わりますか？</dt>
+  <dd>変わります。医療費控除は上限を下げ、住宅ローン控除は所得税で引ききれない場合に影響します。このツールでは考慮していないので、該当する人は控えめに見積もってください。</dd>
+  <dt>ワンストップ特例と確定申告で上限は変わりますか？</dt>
+  <dd>上限額は同じです。ただしワンストップ特例は寄付先が5自治体以内で、確定申告が不要な会社員が対象です。</dd>
+ </dl>
+</section>
+
+<!-- 広告枠② -->
+<div class="ad"></div>
+
+<p class="page-disclaimer">このページの計算は、給与収入のみの会社員を想定した概算です。住宅ローン控除・医療費控除・生命保険料控除などは考慮していません。正確な金額は、お住まいの自治体や税理士にご確認ください。当サイトの計算結果によって生じた損害について、運営者は責任を負いかねます。</p>
+
+<script>
+(function(){
+ const $=id=>document.getElementById(id);
+ const MAN=10000;
+
+ // 給与所得控除（2026年分）。minは最低保障額
+ function kyuyoKojo(s,min){
+  let k;
+  if(s<=1625000)k=0;
+  else if(s<=1800000)k=s*0.4-100000;
+  else if(s<=3600000)k=s*0.3+80000;
+  else if(s<=6600000)k=s*0.2+440000;
+  else if(s<=8500000)k=s*0.1+1100000;
+  else k=1950000;
+  return Math.min(s,Math.max(min,k));
+ }
+ // 所得税の基礎控除（令和8・9年の特例込み）
+ function kisoIT(g){
+  if(g<=4890000)return 1040000;
+  if(g<=6550000)return 670000;
+  if(g<=23500000)return 620000;
+  if(g<=24000000)return 480000;
+  if(g<=24500000)return 320000;
+  if(g<=25000000)return 160000;
+  return 0;
+ }
+ function kisoRT(g){
+  if(g<=24000000)return 430000;
+  if(g<=24500000)return 290000;
+  if(g<=25000000)return 150000;
+  return 0;
+ }
+ // 配偶者控除 [所得税, 住民税, 人的控除差]
+ function haigusha(g){
+  if(g<=9000000)return[380000,330000,50000];
+  if(g<=9500000)return[260000,220000,40000];
+  if(g<=10000000)return[130000,110000,20000];
+  return[0,0,0];
+ }
+ function rate(t){
+  if(t<=1950000)return .05; if(t<=3300000)return .10; if(t<=6950000)return .20;
+  if(t<=9000000)return .23; if(t<=18000000)return .33; if(t<=40000000)return .40; return .45;
+ }
+ const yen=n=>Math.round(n).toLocaleString('ja-JP')+'円';
+ const num=id=>Math.max(0,parseFloat($(id).value)||0);
+
+ function syncShaho(){ if($('auto').checked) $('shaho').value=Math.round(num('income')*0.15*10)/10; }
+ $('income').addEventListener('input',syncShaho);
+ $('auto').addEventListener('change',()=>{ $('shaho').readOnly=$('auto').checked; syncShaho(); });
+ $('shaho').readOnly=true;
+
+ $('f').addEventListener('submit',e=>{
+  e.preventDefault();
+  const S=num('income')*MAN, shaho=num('shaho')*MAN, ideco=num('ideco')*MAN;
+  const k1=Math.floor(num('kids1')), k2=Math.floor(num('kids2'));
+  const spouse=$('spouse').value==='yes';
+  if(S<=0){ $('income').focus(); return; }
+
+  const gIT=S-kyuyoKojo(S,740000);
+  const gRT=S-kyuyoKojo(S,690000);
+  const hs=spouse?haigusha(gIT):[0,0,0];
+  const fuyoIT=k1*380000+k2*630000, fuyoRT=k1*330000+k2*450000;
+
+  const dedIT=shaho+ideco+kisoIT(gIT)+hs[0]+fuyoIT;
+  const dedRT=shaho+ideco+kisoRT(gRT)+hs[1]+fuyoRT;
+  const taxIT=Math.floor(Math.max(0,gIT-dedIT)/1000)*1000;
+  const taxRT=Math.floor(Math.max(0,gRT-dedRT)/1000)*1000;
+  const r=taxIT>0?rate(taxIT):0;
+
+  // 調整控除
+  let chosei=0;
+  if(gRT<=25000000 && taxRT>0){
+   const diff=50000+hs[2]+k1*50000+k2*180000;
+   chosei = taxRT<=2000000 ? Math.min(diff,taxRT)*0.05
+          : Math.max((diff-(taxRT-2000000))*0.05,2500);
+  }
+  const shotokuwari=Math.max(0,taxRT*0.10-chosei);
+  const limit=shotokuwari*0.2/(0.9-r*1.021)+2000;
+  const shown=Math.floor(limit/1000)*1000;
+
+  $('amount').innerHTML=shown.toLocaleString('ja-JP')+'<span>円</span>';
+  $('safe').textContent= shown>2000
+   ? '安全を見るなら '+(Math.floor(shown*0.9/1000)*1000).toLocaleString('ja-JP')+'円 くらいまでの寄付がおすすめです。'
+   : 'この条件では住民税がほとんどかからないため、ふるさと納税のメリットはほぼありません。';
+
+  const rows=[
+   ['給与所得（所得税）',yen(gIT)],['所得税の課税所得',yen(taxIT)],
+   ['所得税率',(r*100)+'%'],['住民税の課税所得',yen(taxRT)],
+   ['調整控除',yen(chosei)],['住民税所得割額',yen(shotokuwari)]
+  ];
+  $('breakdown').innerHTML=rows.map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>').join('');
+  const box=$('result'); box.classList.remove('show'); void box.offsetWidth; box.classList.add('show');
+  box.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+ });
+})();
+</script>

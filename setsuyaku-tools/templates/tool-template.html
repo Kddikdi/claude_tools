@@ -1,0 +1,82 @@
+<!--
+  新しいツールを追加する手順:
+  1. このファイルを src/tools/<新しいツール名>.html としてコピーする
+     （ファイル名がそのままURL /tools/<新しいツール名>/ になります）
+  2. <!--HEAD--> と <!--BODY--> の中身を書き換える
+  3. src/pages/index.html の .tool-grid に <a class="tool-card"> を追加する
+  4. npm run build（または npm run dev）でプレビューする
+  共通のヘッダー・フッター・ナビゲーション、common.css のデザイントークン・
+  フォーム/結果表示/FAQ/広告枠などのスタイルは自動的に適用されます。
+-->
+<!--HEAD-->
+<title>◯◯シミュレーター【2026年最新版】｜節約ラボ</title>
+<meta name="description" content="◯◯についての説明を100〜120文字程度で書く。">
+<!-- 公開後に自分のURLへ書き換え -->
+<link rel="canonical" href="https://example.com/tools/new-tool/">
+<meta property="og:title" content="◯◯シミュレーター">
+<meta property="og:description" content="◯◯についての説明。">
+<meta property="og:type" content="website">
+<!-- 必要であればFAQPageのJSON-LDや、このページ固有の追加CSS(<style>)をここに書く -->
+<!--BODY-->
+<header>
+ <h1>◯◯シミュレーター<small>2026年（令和8年）の最新情報に対応</small></h1>
+ <p class="lede">◯◯の説明文をここに書く。</p>
+</header>
+
+<form id="f" novalidate>
+ <div class="row">
+  <label for="example">入力項目のラベル</label>
+  <div class="unit"><input id="example" type="number" inputmode="numeric" min="0" value="0"><span>単位</span></div>
+  <p class="hint">補足説明。</p>
+ </div>
+ <button type="submit">計算する</button>
+</form>
+
+<section class="result" id="result" aria-live="polite">
+ <p class="res-lbl">結果ラベル</p>
+ <div class="amount" id="amount">0<span>円</span></div>
+ <details>
+  <summary>計算の内訳を見る</summary>
+  <div class="tbl"><table id="breakdown"></table></div>
+ </details>
+</section>
+
+<!-- 広告枠① -->
+<div class="ad"></div>
+
+<section>
+ <h2>関連リンク<span class="pr">PR</span></h2>
+ <div class="portals">
+  <a href="#" rel="sponsored noopener" target="_blank">リンク先の名前<small>補足</small></a>
+ </div>
+</section>
+
+<section>
+ <h2>解説記事の見出し</h2>
+ <p>解説文をここに書く。</p>
+</section>
+
+<section>
+ <h2>よくある質問</h2>
+ <dl class="faq">
+  <dt>質問1</dt>
+  <dd>回答1</dd>
+ </dl>
+</section>
+
+<!-- 広告枠② -->
+<div class="ad"></div>
+
+<p class="page-disclaimer">このページの計算は概算の目安です。正確な金額は専門家・関係機関にご確認ください。当サイトの計算結果によって生じた損害について、運営者は責任を負いかねます。</p>
+
+<script>
+(function(){
+ const $=id=>document.getElementById(id);
+ $('f').addEventListener('submit',e=>{
+  e.preventDefault();
+  // ここに計算ロジックを書く
+  const box=$('result'); box.classList.remove('show'); void box.offsetWidth; box.classList.add('show');
+  box.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+ });
+})();
+</script>

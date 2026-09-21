@@ -1,0 +1,10 @@
+{
+  "name": "setsuyaku-tools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "節約・お金のシミュレーターサイト（静的サイト、依存パッケージなし）",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "npm run build && npx --yes serve dist"
+  }
+}
